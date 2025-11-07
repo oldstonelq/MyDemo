@@ -36,7 +36,13 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.7.0.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.7.0\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=2.0.2.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.2.0.2\lib\net471\System.Data.SQLite.dll</HintPath>
@@ -51,14 +57,22 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBaseHelper\SqlHelpr.cs" />
-    <Compile Include="DataBaseHelper\SqlLiteHelpr.cs" />
+    <Compile Include="DataBaseHelp\SqlHelpr.cs" />
+    <Compile Include="DataBaseHelp\SqlLiteHelpr.cs" />
+    <Compile Include="FileHelp\ConfigFileTool.cs" />
     <Compile Include="FileHelp\CSVFileTool.cs" />
     <Compile Include="FileHelp\DirectoryTool.cs" />
     <Compile Include="FileHelp\FileGeneralTool.cs" />
+    <Compile Include="FileHelp\FileWatcherTool.cs" />
     <Compile Include="FileHelp\InIFileTool.cs" />
+    <Compile Include="ImageHelp\ImageConverTool.cs" />
+    <Compile Include="ImageHelp\QrCodeGeneratorTool.cs" />
+    <Compile Include="LogHelp\SystemEventLoggerTool.cs" />
+    <Compile Include="LogHelp\TextLoggerTool.cs" />
+    <Compile Include="OtherHelp\EnumTool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

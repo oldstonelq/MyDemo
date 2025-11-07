@@ -1,4 +1,12 @@
-﻿using System;
+﻿// ---------------------------------------------------------------------------------
+// File: mTabControl.cs
+// Description: 自定义mTabControl控件
+// Author: [刘晴]
+// Create Date: 2025-11-07
+// Last Modified: 2025-11-07
+// Vison 1.0
+// ---------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

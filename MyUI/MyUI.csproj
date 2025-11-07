@@ -49,11 +49,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="mButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mButton.Designer.cs">
+      <DependentUpon>mButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mComboBox.Designer.cs">
+      <DependentUpon>mComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mDataGridView.Designer.cs">
+      <DependentUpon>mDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mPanel.Designer.cs">
+      <DependentUpon>mPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="mTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="mTabControl.Designer.cs">
       <DependentUpon>mTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mTableLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mTableLayoutPanel.Designer.cs">
+      <DependentUpon>mTableLayoutPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mTextBox.Designer.cs">
+      <DependentUpon>mTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

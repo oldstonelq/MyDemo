@@ -50,12 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IScanner.cs" />
-    <Compile Include="SerialPort\DatalogicSerialScanner.cs" />
-    <Compile Include="SerialPort\HoneyWellSerialScanner.cs" />
-    <Compile Include="SerialPort\KeyenceSerialScanner.cs" />
-    <Compile Include="TCP\DatalogicTcpScanner.cs" />
-    <Compile Include="TCP\HoneyWellTcpScanner.cs" />
-    <Compile Include="TCP\KeyenceTcpScanner.cs" />
+    <Compile Include="SerialPortMode\DatalogicSerialScanner.cs" />
+    <Compile Include="SerialPortMode\HoneyWellSerialScanner.cs" />
+    <Compile Include="SerialPortMode\KeyenceSerialScanner.cs" />
+    <Compile Include="TCPMode\DatalogicTcpScanner.cs" />
+    <Compile Include="TCPMode\HoneyWellTcpScanner.cs" />
+    <Compile Include="TCPMode\KeyenceTcpScanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SerialPortMode\Multimeter_3153.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TCPMode\Multimeter_3562.cs" />
+    <Compile Include="TCPMode\Multimeter_7276.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
