@@ -1,9 +1,10 @@
 ﻿// ---------------------------------------------------------------------------------
 // File: IScanner.cs
 // Description: 扫码枪接口，定义了所有扫码枪实现类必须实现的属性和方法
-// Author: [作者姓名]
-// Create Date: 2023-XX-XX
-// Last Modified: 2023-XX-XX
+// Author: [刘晴]
+// Create Date: 2025-11-07
+// Last Modified: 2025-11-07
+// Vison 1.0
 // ---------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;

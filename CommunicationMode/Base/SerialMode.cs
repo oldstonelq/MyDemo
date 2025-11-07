@@ -1,4 +1,12 @@
-﻿using System;
+﻿// ---------------------------------------------------------------------------------
+// File: SerialMode.cs
+// Description: 串口通信基础实现
+// Author: [刘晴]
+// Create Date: 2025-11-07
+// Last Modified: 2025-11-07
+// Vison 1.0
+// ---------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Threading;

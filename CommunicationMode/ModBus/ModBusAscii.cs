@@ -1,4 +1,12 @@
-﻿using CommunicationMode.Connection_Mode;
+﻿// ---------------------------------------------------------------------------------
+// File: ModBusAscii.cs
+// Description: ModBusAscii协议实现
+// Author: [刘晴]
+// Create Date: 2025-11-07
+// Last Modified: 2025-11-07
+// Vison 1.0
+// ---------------------------------------------------------------------------------
+using CommunicationMode.Connection_Mode;
 using CommunicationMode.Connection_Mode.Base;
 using System;
 using System.IO.Ports;

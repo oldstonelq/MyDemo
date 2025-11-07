@@ -1,9 +1,10 @@
 ﻿// ---------------------------------------------------------------------------------
 // File: DatalogicTcpScanner.cs
 // Description: 德利捷TCP扫码枪实现类，实现TCP通信的德利捷扫码枪功能
-// Author: [作者姓名]
-// Create Date: 2023-XX-XX
-// Last Modified: 2023-XX-XX
+// Author: [刘晴]
+// Create Date: 2025-11-07
+// Last Modified: 2025-11-07
+// Vison 1.0
 // ---------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
