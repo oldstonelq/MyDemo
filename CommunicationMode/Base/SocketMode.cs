@@ -13,7 +13,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CommunicationMode.Connection_Mode
+namespace CommunicationMode.Base
 {
     /// <summary>
     /// 同步Socket连接设备的基类（优化版：资源安全+线程安全+连接可靠）

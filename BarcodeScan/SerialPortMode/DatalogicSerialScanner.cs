@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading;
 
 
-namespace WindowsFormLearn.Models.BarcodeScanner
+namespace BarcodeScan.SerialPortMode
 {
     /// <summary>
     /// 德利捷串口扫码枪实现类，实现IScanner接口

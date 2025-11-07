@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormLearn.Models.BarcodeScanner
+namespace BarcodeScan
 {
     /// <summary>
     /// 扫码枪接口，定义了扫码枪的基本功能和状态

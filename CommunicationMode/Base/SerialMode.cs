@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Threading;
 
-namespace CommunicationMode.Connection_Mode.Base
+namespace CommunicationMode.Base
 {
     /// <summary>
     /// 串口通信基类（C# 7.3 兼容版：资源安全+线程安全+通信可靠）

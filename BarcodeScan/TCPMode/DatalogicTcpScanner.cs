@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading;
 
 
-namespace WindowsFormLearn.Models.BarcodeScanner
+namespace BarcodeScan.TCPMode
 {
     /// <summary>
     /// 德利捷TCP扫码枪实现类，实现IScanner接口，通过TCP协议与德利捷扫码枪通信

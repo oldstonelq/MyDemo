@@ -1,6 +1,6 @@
 ﻿// ---------------------------------------------------------------------------------
 // File: DatalogicSerialScanner.cs
-// Description: 基恩士串口扫码枪实现类，实现串口通信的基恩士扫码枪功能
+// Description: 海康威视串口扫码枪实现类，实现串口通信的海康威视扫码枪功能
 // Author: [刘晴]
 // Create Date: 2025-11-07
 // Last Modified: 2025-11-07
@@ -14,17 +14,17 @@ using System.Text;
 using System.Threading;
 
 
-namespace WindowsFormLearn.Models.BarcodeScanner
+namespace BarcodeScan.SerialPortMode
 {
     /// <summary>
-    /// 基恩士串口扫码枪实现类，实现IScanner接口
+    /// HoneyWell串口扫码枪实现类
     /// </summary>
-    public class KeyenceSerialScanner : IScanner
+    public class HoneyWellSerialScanner : IScanner
     {
         /// <summary>
         /// 串口对象，用于与扫码枪通信
         /// </summary>
-        private SerialPort mSerialPort;
+        private SerialPort mSerialPort=null;
         /// <summary>
         /// 串口名称
         /// </summary>
@@ -58,20 +58,20 @@ namespace WindowsFormLearn.Models.BarcodeScanner
         }
 
         /// <summary>
-        /// 构造函数，初始化基恩士串口扫码枪
+        /// 构造函数，初始化HoneyWell串口扫码枪
         /// </summary>
         /// <param name="portName">串口名称</param>
         /// <param name="baudRate">波特率</param>
         /// <param name="parity">奇偶校验位</param>
         /// <param name="dataBits">数据位</param>
         /// <param name="stopBits">停止位</param>
-        public KeyenceSerialScanner(string portName, int baudRate, Parity parity, int dataBits, StopBits stopBits)
+        public HoneyWellSerialScanner(string portName, int baudRate, Parity parity, int dataBits, StopBits stopBits)
         {
-            this.PortName = portName;
-            this.BaudRate = baudRate;
-            this.Parity = parity;
-            this.DataBits = dataBits;
-            this.StopBits = stopBits;
+           this.PortName = portName;
+           this.BaudRate = baudRate;
+           this.Parity = parity;
+           this.DataBits = dataBits;
+           this.StopBits = stopBits;
         }
         /// <summary>
         /// 初始化扫码枪
@@ -101,8 +101,9 @@ namespace WindowsFormLearn.Models.BarcodeScanner
                     }
                     mSerialPort.DiscardInBuffer();
                     mSerialPort.DiscardOutBuffer();
-                    // 发送测试指令判断是否连接成功
-                    mSerialPort.WriteLine("TEST\r");
+                    // 发送读扫码枪信息指令判断是否连接成功
+                    byte[] mBytes = new byte[] { 0x16, 0x4D, 0x0D, 0x52, 0x45, 0x56, 0x49, 0x4E, 0x46, 0x2E };
+                    mSerialPort.Write(mBytes, 0, mBytes.Length);
                     Thread.Sleep(500);
                     if (mSerialPort.BytesToRead > 0)
                     {
@@ -110,11 +111,15 @@ namespace WindowsFormLearn.Models.BarcodeScanner
                     }
                     else
                     {
-                        mConnected = false;
+                        throw new Exception();
                     }
                 }
                 catch (Exception)
                 {
+                    if (mSerialPort.IsOpen)
+                    {
+                        mSerialPort.Close();
+                    }
                     mConnected = false;
                 }
                 finally
@@ -139,8 +144,9 @@ namespace WindowsFormLearn.Models.BarcodeScanner
             mSerialPort.DiscardInBuffer();
             mSerialPort.DiscardOutBuffer();
             // 发送开始扫码指令
-            mSerialPort.WriteLine("LON\r");
-            Thread.Sleep(100);
+            byte[] mBytes = new byte[] { 0x16, 0x54, 0x0D };
+            mSerialPort.Write(mBytes, 0, mBytes.Length);
+            Thread.Sleep(200);
             
             // 循环读取条码数据，最多尝试30次
             while (true)
@@ -152,18 +158,8 @@ namespace WindowsFormLearn.Models.BarcodeScanner
                         byte[] tempByte = new byte[mSerialPort.BytesToRead];
                         mSerialPort.Read(tempByte, 0, tempByte.Length);
                         BarcodeValue += ASCIIEncoding.ASCII.GetString(tempByte);
-                        
-                        // 检查是否接收到完整的条码数据
-                        if (BarcodeValue.Count(o => o.ToString().Contains("\r")) == 2)
-                        {
-                            BarcodeValue = BarcodeValue.Split('\r')[1];
-                            // 检查是否为错误响应
-                            if (BarcodeValue == "ERROR")
-                            {
-                                BarcodeValue = "";
-                            }
-                            break;
-                        }
+                        BarcodeValue = BarcodeValue.Replace("\r", "").Replace("\n", "").Trim();
+                        break;
                     }
                     else if (Count++ > 30)
                     {
@@ -179,6 +175,9 @@ namespace WindowsFormLearn.Models.BarcodeScanner
                     Thread.Sleep(100);
                 }
             }
+            
+            // 扫描完成后停止扫码
+            StopRead();
             return BarcodeValue;
         }
         /// <summary>
@@ -190,6 +189,21 @@ namespace WindowsFormLearn.Models.BarcodeScanner
             {
                 mSerialPort.Close();
             }
+        }
+        /// <summary>
+        /// 停止扫码操作
+        /// </summary>
+        public void StopRead()
+        {
+            if (Connected == false)
+            {
+                return;
+            }
+            mSerialPort.DiscardInBuffer();
+            mSerialPort.DiscardOutBuffer();
+            // 发送停止扫码指令
+            byte[] mBytes = new byte[] { 0x16, 0x55, 0x0D };
+            mSerialPort.Write(mBytes, 0, mBytes.Length);
         }
     }
 }

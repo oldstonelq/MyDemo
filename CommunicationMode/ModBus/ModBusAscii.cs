@@ -6,13 +6,12 @@
 // Last Modified: 2025-11-07
 // Vison 1.0
 // ---------------------------------------------------------------------------------
-using CommunicationMode.Connection_Mode;
-using CommunicationMode.Connection_Mode.Base;
+using CommunicationMode.Base;
 using System;
 using System.IO.Ports;
 using System.Text;
 
-namespace CommunicationMode.Modbus.ModBus
+namespace CommunicationMode.ModBus
 {
     /// <summary>
     /// Modbus ASCII 客户端（基于 SerialMode 扩展，兼容 C# 7.0+）
