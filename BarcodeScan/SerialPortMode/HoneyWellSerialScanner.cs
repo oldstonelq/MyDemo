@@ -2,9 +2,9 @@
 // File: DatalogicSerialScanner.cs
 // Description: 海康威视串口扫码枪实现类，实现串口通信的海康威视扫码枪功能
 // Author: [刘晴]
-// Create Date: 2025-11-07
-// Last Modified: 2025-11-07
-// Vison:1.0
+// Create Date: 2025-11-10
+// Last Modified: 2025-11-10
+// Vison:2.0
 // ---------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
@@ -56,7 +56,10 @@ namespace BarcodeScan.SerialPortMode
         {
             get { return mConnected; }
         }
-
+        /// <summary>
+        /// 连接线程
+        /// </summary>
+        Thread ConnectThread = null;
         /// <summary>
         /// 构造函数，初始化HoneyWell串口扫码枪
         /// </summary>
@@ -78,9 +81,15 @@ namespace BarcodeScan.SerialPortMode
         /// </summary>
         public void Init()
         {
-            mSerialPort = new SerialPort(PortName, BaudRate, Parity, DataBits, StopBits);
-            Thread mth = new Thread(Connect);
-            mth.Start();
+            if (mSerialPort == null || mSerialPort.IsOpen == false)
+            {
+                mSerialPort = new SerialPort(PortName, BaudRate, Parity, DataBits, StopBits);
+            }
+            if (ConnectThread == null || ConnectThread.IsAlive == false)
+            {
+                ConnectThread = new Thread(Connect);
+                ConnectThread.Start();
+            }
         }
         /// <summary>
         /// 连接扫码枪的方法，在独立线程中运行

@@ -2,9 +2,9 @@
 // File: KeyenceTcpScanner.cs
 // Description: 基恩士TCP扫码枪实现类，实现TCP通信的基恩士扫码枪功能
 // Author: [刘晴]
-// Create Date: 2025-11-07
-// Last Modified: 2025-11-07
-// Vison 1.0
+// Create Date: 2025-11-10
+// Last Modified: 2025-11-10
+// Vison:2.0
 // ---------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
@@ -48,7 +48,10 @@ namespace BarcodeScan.TCPMode
         {
             get { return mConnected; }
         }
-
+        /// <summary>
+        /// 连接线程
+        /// </summary>
+        Thread ConnectThread = null;
         /// <summary>
         /// 构造函数，初始化基恩士TCP扫码枪
         /// </summary>
@@ -64,8 +67,11 @@ namespace BarcodeScan.TCPMode
         /// </summary>
         public void Init()
         {
-            Thread ConnectThread = new Thread(Connect);
-            ConnectThread.Start();
+            if (ConnectThread == null || ConnectThread.IsAlive == false)
+            {
+                ConnectThread = new Thread(Connect);
+                ConnectThread.Start();
+            }
         }
         /// <summary>
         /// 连接扫码枪的方法，在独立线程中运行
