@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Tools.FileHelp
 {
@@ -95,6 +96,39 @@ namespace Tools.FileHelp
             {
                 return null;
             }
+        }
+        /// <summary>
+        /// DGV表格导出csv文件
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="fileName"></param>
+        /// <param name="appendTexts"></param>
+        /// <returns></returns>
+        public static bool ExportCsv(DataGridView dgv, string fileName, string[] appendTexts = null)
+        {
+            List<string> mList = new List<string>();
+            var sb = new StringBuilder();
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                if (dgv.Columns[i].Visible) sb.Append(dgv.Columns[i].HeaderText + "\t,");
+            }
+            mList.Add(sb.ToString());
+            for (int i = 0; i < dgv.Rows.Count; i++)
+            {
+                sb.Clear();
+                for (int j = 0; j < dgv.Columns.Count; j++)
+                {
+                    if (!dgv.Columns[j].Visible) continue;
+                    if (dgv.Rows[i].Cells[j].Value != null) sb.Append(dgv.Rows[i].Cells[j].Value.ToString() + "\t");
+                    sb.Append(",");
+                }
+                mList.Add(sb.ToString());
+            }
+            if (appendTexts != null && appendTexts.Length > 0)
+            {
+                mList.AddRange(appendTexts);
+            }
+            return WriteCSV(fileName, mList.ToArray(), System.IO.FileMode.Create) == "ok";
         }
     }
 }

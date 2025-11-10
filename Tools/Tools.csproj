@@ -73,6 +73,8 @@
     <Compile Include="LogHelp\SystemEventLoggerTool.cs" />
     <Compile Include="LogHelp\TextLoggerTool.cs" />
     <Compile Include="OtherHelp\EnumTool.cs" />
+    <Compile Include="OtherHelp\OtherTool.cs" />
+    <Compile Include="OtherHelp\StringCompressTool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
