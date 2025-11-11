@@ -72,6 +72,7 @@
     <Compile Include="ImageHelp\QrCodeGeneratorTool.cs" />
     <Compile Include="LogHelp\SystemEventLoggerTool.cs" />
     <Compile Include="LogHelp\TextLoggerTool.cs" />
+    <Compile Include="OtherHelp\AssemblyTool.cs" />
     <Compile Include="OtherHelp\EnumTool.cs" />
     <Compile Include="OtherHelp\OtherTool.cs" />
     <Compile Include="OtherHelp\StringCompressTool.cs" />
